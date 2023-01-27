@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/jonny/CLionProjects/ringbuffer/cmake-build-debug/
+cmake_ninja_workdir = C$:/Users/jonny/Documents/Code/ringbuffer/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target ringbuffer
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = C$:/Users/jonny/CLionProjects/ringbuffer/cmake-build-debug
 
 build cmake_object_order_depends_target_ringbuffer: phony || CMakeFiles/ringbuffer.dir
 
-build CMakeFiles/ringbuffer.dir/main.cpp.obj: CXX_COMPILER__ringbuffer_Debug C$:/Users/jonny/CLionProjects/ringbuffer/main.cpp || cmake_object_order_depends_target_ringbuffer
+build CMakeFiles/ringbuffer.dir/main.cpp.obj: CXX_COMPILER__ringbuffer_Debug C$:/Users/jonny/Documents/Code/ringbuffer/main.cpp || cmake_object_order_depends_target_ringbuffer
   DEP_FILE = CMakeFiles\ringbuffer.dir\main.cpp.obj.d
   FLAGS = -g -std=gnu++23
   OBJECT_DIR = CMakeFiles\ringbuffer.dir
@@ -81,7 +81,7 @@ build ringbuffer.exe: CXX_EXECUTABLE_LINKER__ringbuffer_Debug CMakeFiles/ringbuf
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\jonny\CLionProjects\ringbuffer\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = cmd.exe /C "cd /D C:\Users\jonny\Documents\Code\ringbuffer\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -92,7 +92,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\jonny\CLionProjects\ringbuffer\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jonny\CLionProjects\ringbuffer -BC:\Users\jonny\CLionProjects\ringbuffer\cmake-build-debug"
+  COMMAND = cmd.exe /C "cd /D C:\Users\jonny\Documents\Code\ringbuffer\cmake-build-debug && "C:\Program Files\JetBrains\CLion 2021.3.3\bin\cmake\win\bin\cmake.exe" --regenerate-during-build -SC:\Users\jonny\Documents\Code\ringbuffer -BC:\Users\jonny\Documents\Code\ringbuffer\cmake-build-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -110,7 +110,7 @@ build ringbuffer: phony ringbuffer.exe
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/jonny/CLionProjects/ringbuffer/cmake-build-debug
+# Folder: C:/Users/jonny/Documents/Code/ringbuffer/cmake-build-debug
 
 build all: phony ringbuffer.exe
 

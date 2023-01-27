@@ -64,7 +64,7 @@ public:
         // Using mutex lock() to ensure that only one thread can access a memory location at a time
         locker.lock();
         if (m_buffer[m_read_cursor % m_buffer_length] != NULL){
-            char object_to_return = m_buffer[m_read_cursor % m_buffer_length];
+            T object_to_return = m_buffer[m_read_cursor % m_buffer_length];
             m_buffer[m_read_cursor++ % m_buffer_length] = NULL;
             --m_number_of_elements;
             locker.unlock();
