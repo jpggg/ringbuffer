@@ -2,7 +2,7 @@
 #include <thread>
 #include <chrono>
 
-// ALLOWS THE USER TO ENTER KEYBOARD INPUT TO THE BUFFER
+// ALLOWS THE USER TO ENTER KEYBOARD INPUT DATA TO THE BUFFER
 template <typename T>
 void human_start_writing(Ringbuffer<T>& buffy, std::mutex& locker){
     T input;
@@ -11,7 +11,7 @@ void human_start_writing(Ringbuffer<T>& buffy, std::mutex& locker){
     }
 }
 
-// A BOT WHICH CONTINUOUSLY INPUTS TO THE BUFFER
+// A BOT WHICH CONTINUOUSLY INPUTS DATA TO THE BUFFER
 template <typename T>
 void bot_start_writing(Ringbuffer<T>& buffy, std::mutex& locker){
     char sample[20] = "abcdefghijklmnopqrs";
@@ -20,18 +20,18 @@ void bot_start_writing(Ringbuffer<T>& buffy, std::mutex& locker){
         std::cout << "BOT INPUT = " << sample[i%20] << std::endl;
         locker.unlock();
         buffy.write_to_buffer(sample[(i++)%20], locker);
-        std::this_thread::sleep_for(std::chrono::seconds(10));
+        std::this_thread::sleep_for(std::chrono::seconds(6));
     }
 }
 
-// A BOT WHICH OUTPUTS AND PRINTS FROM THE BUFFER EVERY 2 SECONDS
+// A BOT WHICH OUTPUTS AND PRINTS FROM THE BUFFER EVERY 2 SECONDS (IF THERE IS SOMETHING NEW TO OUTPUT)
 template <typename T>
 void start_reading(Ringbuffer<T>& buffy, std::mutex& locker){
     while (true){
-        T reading {buffy.read_from_buffer(locker)};
-        if (reading != NULL){
+        T* reading {buffy.read_from_buffer(locker)};
+        if (reading){
             locker.lock();
-            std::cout << "OUTPUT = " << reading << std::endl;
+            std::cout << "OUTPUT = " << *reading << std::endl;
             locker.unlock();
         }
         std::this_thread::sleep_for(std::chrono::seconds(2));
@@ -41,8 +41,8 @@ void start_reading(Ringbuffer<T>& buffy, std::mutex& locker){
 
 int main() {
 
-    // CONSTRUCTING BUFFER OF CHARS WITH 9 MEMORY PLACES
-    Ringbuffer<char> buffy(9);
+    // CONSTRUCTING BUFFER OF CHARS WITH 5 MEMORY PLACES
+    Ringbuffer<char> buffy(5);
 
     // CONSTRUCTING MUTEX FOR SYNCHRONIZING REASONS
     std::mutex locker;
