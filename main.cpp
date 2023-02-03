@@ -1,4 +1,5 @@
 #include "Ringbuffer.h"
+#include "Jonathan.h"
 #include <thread>
 #include <chrono>
 
@@ -47,15 +48,21 @@ int main() {
     // CONSTRUCTING MUTEX FOR SYNCHRONIZING REASONS
     std::mutex locker;
 
-    // STARTING THREADS THAT RUN THE DIFFERENT PROCESSES
+    // STARTING THREADS THAT RUN THE DIFFERENT PROCESSES:
+    // Thread 1: Accepts human input
     std::thread human_write_thread(human_start_writing<char>, std::ref(buffy), std::ref(locker));
+    // Thread 2: Bot automatically inputs
     std::thread bot_write_thread(bot_start_writing<char>, std::ref(buffy), std::ref(locker));
+    // Thread 3: Automatically reads and outputs
     std::thread read_thread(start_reading<char>, std::ref(buffy), std::ref(locker));
 
     // JOINING THE THREADS
     human_write_thread.join();
     bot_write_thread.join();
     read_thread.join();
+
+
+
 
     return 0;
 }
